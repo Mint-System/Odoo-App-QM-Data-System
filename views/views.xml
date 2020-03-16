@@ -1,0 +1,57 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="qm_data_system.list">
+      <field name="name">qm_data_system list</field>
+      <field name="model">qm_data_system.finding</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="title"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="qm_data_system.action_window">
+      <field name="name">Findings</field>
+      <field name="res_model">qm_data_system.finding</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+
+    <record model="ir.actions.server" id="qm_data_system.action_server">
+      <field name="name">qm_data_system server</field>
+      <field name="model_id" ref="model_qm_data_system_finding"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+
+    <!-- Top menu item -->
+
+    <menuitem name="QM Data System" id="qm_data_system.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Verwalten" id="qm_data_system.menu_1" parent="qm_data_system.menu_root"/>
+    <menuitem name="Menu 2" id="qm_data_system.menu_2" parent="qm_data_system.menu_root"/>
+
+    <!-- actions -->
+
+    <menuitem name="Findings" id="qm_data_system.menu_1_list" parent="qm_data_system.menu_1"
+              action="qm_data_system.action_window"/>
+    <menuitem name="Server to list" id="qm_data_system" parent="qm_data_system.menu_2"
+              action="qm_data_system.action_server"/>
+  </data>
+</odoo>
