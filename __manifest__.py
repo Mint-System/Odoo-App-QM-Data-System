@@ -3,11 +3,11 @@
     'name': "QM Data System",
 
     'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
+        QM Data System Summary
+    """,
 
     'description': """
-        Long description of module's purpose
+        QM Data System Description
     """,
 
     'author': "Mint System GmbH",
